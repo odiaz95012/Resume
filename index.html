@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- TODO: Fix profile picture resizing bug -->
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0fab3e939d.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="./index.js"></script>
     <style>
         * {
             margin: 0px;
@@ -20,7 +21,10 @@
             font-size: 35px;
             margin: 0px 25px;
         }
-
+        #about-me-txt {
+            font-size: 21px;
+            line-height: 2.25rem;
+        }
         body {
             background-color: #121212;
             color: #fff;
@@ -62,7 +66,7 @@
 </head>
 
 <body>
-    <nav class="navbar bg-dark navbar-expand-lg border-body " data-bs-theme="dark">
+    <nav class="navbar bg-dark navbar-expand-lg border-body" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand ms-4 text-white" href="#">Oscar Diaz Vega</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -110,10 +114,15 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <div class="col-md-6 mx-auto my-2">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, suscipit rem beatae sit
-                            ab
-                            recusandae dicta? Asperiores cum, maiores omnis voluptatibus totam nam iste ab non adipisci
-                            minus eaque qui?</p>
+                        <p id="about-me-txt">
+                            Hi! My name is Oscar Diaz Vega and I am a senior Computer Science student at <em>San Jose State University</em> with a planned graduation date of May 2024.
+                            I come from Mexican descent and have dreams of breaking barriers and succeeeding in the tech industry.  
+                            Full-stack web development is my main area of interest, but I am also interested in mobile development, machine learning, and data science.
+                            I am passionate about software development and I am always looking for opportunities to learn and grow as a developer.
+                            If you would like to get in touch with me, feel free to reach out to me on 
+                            <a href="https://linkedin.com/in/oscar-diaz-vega-a15bb31a6/" target="_blank" style="text-decoration: none;">LinkedIn</a> or 
+                            <a href="mailto:odiaz95012@gmail" style="text-decoration: none;">email</a>. 
+                        </p>
 
                     </div>
 
@@ -123,7 +132,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end align-items-center me-5" id="resume">
-                <button type="button" class="btn btn-outline-light">Download Resume <i
+                <button type="button" class="btn btn-outline-light" onclick="downloadResume()">Download Resume <i
                         class="fa-solid fa-download ps-2"></i></button>
 
             </div>
@@ -360,7 +369,7 @@
                     <div class="col-md-6 my-2">
                         <ul class="list-group">
                             <li class="list-group-item card">
-                                <p class="fs-5">Labs Intern</p>
+                                <p class="fs-5">Software Engineering Intern</p>
                                 <p class="fs-6 fst-italic ps-2">CodeDay-CTI, Open-Source Development</p>
                                 <p class="fs-6 fw-medium ps-2">Skills</p>
                                 <div class="d-flex justify-content-center">
@@ -381,10 +390,7 @@
                                 <p class="fs-6 fw-light ps-2">- Mentored and supervised by Cay Horstmann, Professor at
                                     PFH
                                     Private Hochschule Göttingen.</p>
-                                <p class="fs-6 fw-light ps-2">- Engineered a local file system database using Java, to
-                                    allow
-                                    developers to contribute to the project's assignment feature
-                                    without an Amazon Web Services account.</p>
+                                <p class="fs-6 fw-light ps-2">- Implemented modern design patterns to engineer a file system that enables students to save, retrieve, and edit their work on command.</p>
                             </li>
                         </ul>
 
@@ -643,7 +649,7 @@
                                 <iconify-icon icon="skill-icons:github-light" style="color: white; margin-top: 15px;"
                                     width="40"></iconify-icon>
                             </a>
-                            <a href="" class="connect-icons pt-2" target="_blank" rel="noopener noreferrer">
+                            <a href="mailto:odiaz95012@gmail.com" class="connect-icons pt-2" target="_blank" rel="noopener noreferrer">
                                 <iconify-icon icon="skill-icons:gmail-dark" width="40"
                                     style="margin-top: 10px;"></iconify-icon>
                             </a>
