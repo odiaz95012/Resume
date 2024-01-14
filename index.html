@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- TODO: Fix profile picture resizing bug -->
+<!-- TODO: Figure out how to get each card to appear side to side in large vies, but break into seperate views for mobile view-->
+
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oscar Diaz Vega Resume</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,25 +13,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0fab3e939d.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script src="./index.js"></script>
     <style>
         * {
-            margin: 0px;
+            margin: 0;
         }
 
         .connect-icons {
             font-size: 35px;
             margin: 0px 25px;
         }
+
         #about-me-txt {
             font-size: 21px;
             line-height: 2.25rem;
+            max-width: 80%;
         }
+
         body {
             background-color: #121212;
             color: #fff;
             font-size: 18px;
             margin: auto;
+            overflow-x: hidden;
         }
 
         img {
@@ -37,11 +46,16 @@
             object-fit: cover;
         }
 
+        #profile-pic {
+            max-width: 80%;
+        }
+
         .card {
             background-color: #1f1f1f;
             color: #fff;
             width: fit-content;
             margin: auto;
+
         }
 
         .skill-icons {
@@ -62,6 +76,10 @@
             width: 100%;
             margin-top: 100px;
         }
+
+        .skill-list {
+            list-style-type: "-";
+        }
     </style>
 </head>
 
@@ -77,9 +95,6 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="#about-me">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#resume">Resume</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#education">Education</a>
@@ -109,32 +124,32 @@
             </div>
 
             <div class="row my-3" id="about-me">
-                <div class="container text-start ms-5">
+                <div class="container text-start">
                     <h2>About Me</h2>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <div class="col-md-6 mx-auto my-2">
+                    <div class="clearfix">
+                        <img src="./images/profile_pic.jpg" alt="Personal Picture"
+                            class="col-md-6 float-md-end mb-3 ms-md-3 img-thumbnail" id="profile-pic">
                         <p id="about-me-txt">
-                            Hi! My name is Oscar Diaz Vega and I am a senior Computer Science student at <em>San Jose State University</em> with a planned graduation date of May 2024.
-                            I come from Mexican descent and have dreams of breaking barriers and succeeeding in the tech industry.  
-                            Full-stack web development is my main area of interest, but I am also interested in mobile development, machine learning, and data science.
-                            I am passionate about software development and I am always looking for opportunities to learn and grow as a developer.
-                            If you would like to get in touch with me, feel free to reach out to me on 
-                            <a href="https://linkedin.com/in/oscar-diaz-vega-a15bb31a6/" target="_blank" style="text-decoration: none;">LinkedIn</a> or 
-                            <a href="mailto:odiaz95012@gmail" style="text-decoration: none;">email</a>. 
+                            Hi! My name is Oscar Diaz Vega and I am a senior Computer Science student at <em>San Jose
+                                State University</em> with a planned graduation date of May 2024.
+                            I come from Mexican descent and have dreams of breaking barriers and succeeeding in the tech
+                            industry.
+                            Full-stack web development is my main area of interest, but I am also interested in mobile
+                            development, machine learning, and data science.
+                            I am passionate about software development and I am always looking for opportunities to
+                            learn and grow as a developer.
+                            If you would like to get in touch with me, feel free to reach out to me on
+                            <a href="https://linkedin.com/in/oscar-diaz-vega-a15bb31a6/" target="_blank"
+                                style="text-decoration: none;" class="link-info link-opacity-50-hover">LinkedIn</a> or
+                            <a href="mailto:odiaz95012@gmail" style="text-decoration: none;" class="link-info link-opacity-50-hover">email</a>.
                         </p>
-
+                        <button type="button" class="btn btn-outline-light" onclick="downloadResume()">Download Resume
+                            <i class="fa-solid fa-download ps-2"></i></button>
                     </div>
 
-                    <div class="col-md-4 my-2">
-                        <img src="./images/profile_pic.jpg" alt="Personal Picture" class="img-thumbnail">
-                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-end align-items-center me-5" id="resume">
-                <button type="button" class="btn btn-outline-light" onclick="downloadResume()">Download Resume <i
-                        class="fa-solid fa-download ps-2"></i></button>
-
             </div>
             <div class="row my-3" id="education">
                 <div class="container text-start ms-5">
@@ -172,7 +187,6 @@
                                         <p class="fs-6 fw-light ps-2">- Calculus I, II, & III</p>
                                         <p class="fs-6 fw-light ps-2">- Discrete Mathematics</p>
                                         <p class="fs-6 fw-light ps-2">- Object-Oriented Programming</p>
-
                                     </li>
                                 </ul>
                             </li>
@@ -209,40 +223,58 @@
                                 <div class="d-flex-2 justify-content-between align-items-center">
                                     <p class="fs-3">Front End</p>
                                     <div class="d-flex flex-column align-items-start">
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- React </p>
-                                            <i class="fa-brands fa-react skill-icons ps-2 pb-3"
-                                                style="color: lightblue;"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- React Native </p>
-                                            <i class="fa-brands fa-react skill-icons ps-2 pb-3"
-                                                style="color: lightblue;"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- HTML </p>
-                                            <i class="fa-brands fa-html5 skill-icons ps-2 pb-2"
-                                                style="color: orangered;"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- CSS </p>
-                                            <i class="fa-brands fa-css3 skill-icons ps-2 pb-2"
-                                                style="color: RGB(38, 77, 228);"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- JavaScript </p>
-                                            <i class="fa-brands fa-js skill-icons ps-2 pb-2" style="color: yellow;"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Typescript </p>
-                                            <iconify-icon icon="simple-icons:typescript" style="color: rgb(0,122,204);"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium ps-2">- Bootstrap </p>
-                                            <i class="fa-brands fa-bootstrap skill-icons ps-2 pb-2"
-                                                style="color: purple;"></i>
-                                        </div>
+                                        <ul class="skill-list">
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">React </p>
+                                                    <i class="fa-brands fa-react skill-icons ps-2 pb-3"
+                                                        style="color: lightblue;"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">React Native </p>
+                                                    <i class="fa-brands fa-react skill-icons"
+                                                        style="color: lightblue; margin-left: 10px; margin-bottom: 10px;"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">HTML </p>
+                                                    <i class="fa-brands fa-html5 skill-icons ps-2 pb-2"
+                                                        style="color: orangered;"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">CSS </p>
+                                                    <i class="fa-brands fa-css3 skill-icons ps-2 pb-3"
+                                                        style="color: RGB(38, 77, 228);"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">JavaScript </p>
+                                                    <i class="fa-brands fa-js skill-icons ps-2 pb-2"
+                                                        style="color: yellow;"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">Typescript </p>
+                                                    <iconify-icon icon="simple-icons:typescript"
+                                                        style="color: rgb(0,122,204); margin-bottom: 10px; margin-left: 10px;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">Bootstrap </p>
+                                                    <i class="fa-brands fa-bootstrap skill-icons ps-2 pb-2"
+                                                        style="color: purple;"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
 
@@ -255,52 +287,76 @@
                                 <div class="d-flex-2 justify-content-between align-items-center">
                                     <p class="fs-3">Back End</p>
                                     <div class="d-flex flex-column align-items-start">
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2">- Python </p>
-                                            <i class="fa-brands fa-python skill-icons pb-2 ms-2"
-                                                style="color: rgb(255, 232, 115);"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Flask </p>
-                                            <iconify-icon icon="simple-icons:flask" width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- MySQL </p>
-                                            <iconify-icon icon="skill-icons:mysql-dark" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-2">- Java </p>
-                                            <iconify-icon icon="skill-icons:java-dark" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-1">- C++ </p>
-                                            <iconify-icon icon="file-icons:c" style="color: #5E97D0"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium pt-3 px-2">- C </p>
-                                            <iconify-icon icon="skill-icons:c" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <p class="fs-5 fw-medium pt-3 px-2">- JWT </p>
-                                            <iconify-icon icon="logos:jwt" width="50"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-2">- AWS S3 </p>
-                                            <iconify-icon icon="logos:aws-s3" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <P class="fs-5 fw-medium px-2 pt-2">- Google Firebase </P>
-                                            <iconify-icon icon="logos:firebase" width="25"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <P class="fs-5 fw-medium px-2 pt-2">- Express.js </P>
-                                            <iconify-icon icon="skill-icons:expressjs-light" width="35"></iconify-icon>
-                                        </div>
+                                        <ul class="skill-list">
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2">Python </p>
+                                                    <i class="fa-brands fa-python skill-icons pb-2 ms-2"
+                                                        style="color: rgb(255, 232, 115);"></i>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-3">Flask </p>
+                                                    <iconify-icon icon="simple-icons:flask" width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-3">MySQL </p>
+                                                    <iconify-icon icon="skill-icons:mysql-dark" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-2">Java </p>
+                                                    <iconify-icon icon="skill-icons:java-dark" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-1">C++ </p>
+                                                    <iconify-icon icon="file-icons:c" style="color: #5E97D0"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium pt-3 px-2">C </p>
+                                                    <iconify-icon icon="skill-icons:c" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium pt-3 px-2">JWT </p>
+                                                    <iconify-icon icon="logos:jwt" width="50"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-2">AWS S3 </p>
+                                                    <iconify-icon icon="logos:aws-s3" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <P class="fs-5 fw-medium px-2 pt-2">Google Firebase </P>
+                                                    <iconify-icon icon="logos:firebase" width="25"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <P class="fs-5 fw-medium px-2 pt-2">Express.js </P>
+                                                    <iconify-icon icon="skill-icons:expressjs-light"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                        </ul>
+
                                     </div>
                                 </div>
 
@@ -313,21 +369,34 @@
                                 <div class="d-flex-2 justify-content-between align-items-center">
                                     <p class="fs-3">Testing & Deployment</p>
                                     <div class="d-flex flex-column align-items-start">
-                                        <div class="d-flex align-items-center my-1">
+                                        <ul class="skill-list">
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">Docker </p>
+                                                    <iconify-icon icon="skill-icons:docker"
+                                                        style="color: white; margin-left: 10px; margin-bottom: 10px;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">Postman </p>
+                                                    <iconify-icon icon="skill-icons:postman"
+                                                        style="color: white; margin-left: 10px; margin-bottom: 10px;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="fs-5 fw-medium ps-1">JUnit </p>
+                                                    <iconify-icon icon="devicon:junit" width="35"
+                                                        style="margin-left: 10px; margin-bottom: 10px;"></iconify-icon>
+                                                </div>
+                                            </li>
+                                        </ul>
 
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Docker </p>
-                                            <iconify-icon icon="skill-icons:docker" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Postman </p>
-                                            <iconify-icon icon="skill-icons:postman" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- JUnit </p>
-                                            <iconify-icon icon="devicon:junit" width="35"></iconify-icon>
-                                        </div>
+
+
                                     </div>
                             </li>
                         </ul>
@@ -338,21 +407,29 @@
                                 <div class="d-flex-2 justify-content-between align-items-center">
                                     <p class="fs-3">Development Tools</p>
                                     <div class="d-flex flex-column align-items-start">
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Git </p>
-                                            <iconify-icon icon="skill-icons:git" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- GitHub </p>
-                                            <iconify-icon icon="skill-icons:github-light" style="color: white;"
-                                                width="35"></iconify-icon>
-                                        </div>
-                                        <div class="d-flex align-items-center my-1">
-                                            <p class="fs-5 fw-medium px-2 pt-3">- Agile </p>
-                                            <iconify-icon icon="iconoir:agile" style="color: lightblue;"
-                                                width="35"></iconify-icon>
-                                        </div>
+                                        <ul class="skill-list">
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-3">Git </p>
+                                                    <iconify-icon icon="skill-icons:git" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-3">GitHub </p>
+                                                    <iconify-icon icon="skill-icons:github-light" style="color: white;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                            <li class="my-1">
+                                                <div class="d-flex align-items-center my-1">
+                                                    <p class="fs-5 fw-medium px-2 pt-3">Agile </p>
+                                                    <iconify-icon icon="iconoir:agile" style="color: lightblue;"
+                                                        width="35"></iconify-icon>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </li>
@@ -366,7 +443,7 @@
                     <h2>Experience</h2>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <div class="col-md-6 my-2">
+                    <div class="col-md-6 my-2 col-sm-12">
                         <ul class="list-group">
                             <li class="list-group-item card">
                                 <p class="fs-5">Software Engineering Intern</p>
@@ -390,13 +467,14 @@
                                 <p class="fs-6 fw-light ps-2">- Mentored and supervised by Cay Horstmann, Professor at
                                     PFH
                                     Private Hochschule Göttingen.</p>
-                                <p class="fs-6 fw-light ps-2">- Implemented modern design patterns to engineer a file system that enables students to save, retrieve, and edit their work on command.</p>
+                                <p class="fs-6 fw-light ps-2">- Implemented modern design patterns to engineer a file
+                                    system that enables students to save, retrieve, and edit their work on command.</p>
                             </li>
                         </ul>
 
                     </div>
 
-                    <div class="col-md-6 mx-5 my-2">
+                    <div class="col-md-6 mx-5 my-2 col-sm-12">
                         <ul class="list-group">
                             <li class="list-group-item card">
                                 <p class="fs-5">Computer Science Tutor</p>
@@ -442,11 +520,7 @@
                             <li class="list-group-item card">
                                 <div class="d-flex justify-content-start align-items-center">
                                     <p class="fs-5">Full-Stack Software Engineer, Hoken Online Bank</p>
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                        width="75px" height="50px" alt="logo" id="logo"
-                                        style="margin-bottom: 20px; margin-left: 15px;" />
                                 </div>
-
                                 <p class="fs-6 fst-italic ps-2">Front-End Development Lead, Back-End Architechture</p>
                                 <p class="fs-6 fw-medium ps-2">Skills</p>
                                 <div class="d-flex justify-content-between align-items-center mx-2 mb-2 p-2"
@@ -493,8 +567,8 @@
                             <li class="list-group-item card">
                                 <div class="d-flex justify-content-start align-items-center">
                                     <p class="fs-5">Full-Stack Software Engineer, SongSnap</p>
-                                    <img src="./images/songsnap_logo.png" width="50px" height="50px" alt="logo" id="logo"
-                                        style="margin-bottom: 10px; margin-left: 15px; border-radius: 50%;" />
+                                    <img src="./images/songsnap_logo.png" width="50px" height="50px" alt="logo"
+                                        id="logo" style="margin-bottom: 10px; margin-left: 15px; border-radius: 50%;" />
                                 </div>
                                 <p class="fs-6 fst-italic ps-2">Full Stack Web Application</p>
                                 <p class="fs-6 fw-medium ps-2">Skills</p>
@@ -551,7 +625,8 @@
                                 <div class="d-flex justify-content-start align-items-center">
                                     <p class="fs-5">Full Stack Mobile Application, iMoneyTracker</p>
                                     <img src="./images/imoneytracker_logo.png" width="50px" height="50px" alt="logo"
-                                        id="logo" style="margin-bottom: 10px; margin-left: 15px; border-radius: 25px;" />
+                                        id="logo"
+                                        style="margin-bottom: 10px; margin-left: 15px; border-radius: 25px;" />
                                 </div>
                                 <p class="fs-6 fst-italic ps-2">Financial Tracker Mobile Application</p>
                                 <p class="fs-6 fw-medium ps-2">Skills</p>
@@ -597,7 +672,7 @@
                         <ul class="list-group">
                             <li class="list-group-item card">
                                 <p class="fs-5">3D Lunar Landing Simulating Game</p>
-                                <p class="fs-6 fst-italic ps-2">3D Video Game</p>
+                                <p class="fs-6 fst-italic ps-2">3D Simulation Video Game</p>
                                 <p class="fs-6 fw-medium ps-2">Skills</p>
                                 <div class="d-flex justify-content-center">
                                     <div class="d-flex justify-content-center align-items-center mx-2 mb-2 p-2"
@@ -649,7 +724,8 @@
                                 <iconify-icon icon="skill-icons:github-light" style="color: white; margin-top: 15px;"
                                     width="40"></iconify-icon>
                             </a>
-                            <a href="mailto:odiaz95012@gmail.com" class="connect-icons pt-2" target="_blank" rel="noopener noreferrer">
+                            <a href="mailto:odiaz95012@gmail.com" class="connect-icons pt-2" target="_blank"
+                                rel="noopener noreferrer">
                                 <iconify-icon icon="skill-icons:gmail-dark" width="40"
                                     style="margin-top: 10px;"></iconify-icon>
                             </a>
